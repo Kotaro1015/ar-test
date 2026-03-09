@@ -1,0 +1,53 @@
+<html>
+<head>
+<script src="aframe.min.js"></script>
+<script src="aframe-ar-nft.js"></script>
+</head>
+
+<body style="margin:0; overflow:hidden;">
+
+<a-scene
+embedded
+renderer="logarithmicDepthBuffer: true; antialias: true;"
+arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+
+<!-- ライト -->
+<a-light type="ambient" color="#ffffff" intensity="0.8"></a-light>
+
+<a-light
+ type="directional"
+ position="1 2 1"
+ intensity="1"
+ castShadow="true">
+</a-light>
+
+<a-marker type="pattern" url="pattern-AZARASHI.patt">
+
+<!-- 影を受ける床 -->
+<a-plane
+ rotation="-90 0 0"
+ width="2"
+ height="2"
+ color="#cccccc"
+ shadow="receive: true"
+ opacity="0.3">
+</a-plane>
+
+<!-- 3Dモデル -->
+<a-entity
+ position="0 0.3 0"
+ rotation="0 180 0"
+ scale="0.4 0.4 0.4"
+ gltf-model="Arazashi_K.glb"
+ shadow="cast: true"
+ animation="property: rotation; to: 0 360 0; loop: true; dur: 8000; easing: linear">
+</a-entity>
+
+</a-marker>
+
+<a-entity camera></a-entity>
+
+</a-scene>
+
+</body>
+</html>
